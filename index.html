@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EXE App Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('BG.jpeg'); /* Set the background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #search {
+            width: 90%;
+            padding: 12px;
+            font-size: 22px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+        .app {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            margin: 15px auto;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            width: 85%;
+        }
+        .app img {
+            width: 100px;
+            height: 100px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+        .app-info {
+            flex: 1;
+        }
+        .app-title {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .app-version {
+            color: #777;
+            font-size: 18px;
+        }
+        .install-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 12px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Search for apps..." onkeyup="searchApps()">
+    <div id="app-list">
+        <div class="app">
+            <img src="EsignIcon.jpeg" alt="App 1 Icon">
+            <div class="app-info">
+                <div class="app-title">ESign</div>
+                <div class="app-version">Version 4.8.2</div>
+                <button class="install-button">Install</button>
+            </div>
+        </div>
+        <div class="app">
+            <img src="GBoxIcon.jpeg" alt="App 2 Icon">
+            <div class="app-info">
+                <div class="app-title">GBox</div>
+                <div class="app-version">Version Unkown</div>
+                <button class="install-button">Install</button>
+            </div>
+        </div>
+        <div class="app">
+            <img src="ScarletIcon.jpeg" alt="App 3 Icon">
+            <div class="app-info">
+                <div class="app-title">Scarlet</div>
+                <div class="app-version">Version 1.0</div>
+                <button class="install-button">Install</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function searchApps() {
+            var input, filter, appList, app, title, i;
+            input = document.getElementById('search');
+            filter = input.value.toLowerCase(); // Corrected the function call
+            appList = document.getElementById('app-list');
+            app = appList.getElementsByClassName('app');
+
+            for (i = 0; i < app.length; i++) {
+                title = app[i].getElementsByClassName('app-title')[0];
+                if (title.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                    app[i].style.display = 'flex'; // Display found apps as flex
+                } else {
+                    app[i].style.display = 'none'; // Hide non-matching apps
+                }
+            }
+        }
+    </script>
+</body>
+</html>
